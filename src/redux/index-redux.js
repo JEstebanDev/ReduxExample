@@ -20,9 +20,6 @@ console.log(store.getState());
 
 store.dispatch(completedTask(2));
 
-//
-store.dispatch(fetchTodo());
+// async await function stunks
+//store.dispatch(fetchTodo());
 //unsubscribe();
-/*
-In short this code imports the store from the configStore file and then uses the duck module to add two tasks, remove one task, and mark one task as completed. It also subscribes to store updates and logs them in the console. Finally, it unsubscribes from store updates before marking a task as completed.
-*/
