@@ -1,7 +1,7 @@
 const path = require("path");
 
 module.exports = {
-  entry: "./src/redux-toolkit/index-redux-toolkit.js",
+  entry: "./src/task/task.js",
   output: {
     filename: "app.js",
     path: path.resolve(__dirname, "dist"),
