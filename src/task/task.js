@@ -1,5 +1,8 @@
 import axios from "axios";
 import {
+  addNewTask,
+  completeTask,
+  deleteTask,
   fetchTask,
   GET_TASK,
   loadTasks,
@@ -41,5 +44,9 @@ gettingTasks();
 //*calling api using async thunk
 //storeGeneral.dispatch(fetchTask());
 
-//*calling api using middle ware
+//*calling api using middleware
 storeGeneral.dispatch(loadTasks());
+
+//storeGeneral.dispatch(addNewTask({ task: "Juan task" }));
+//storeGeneral.dispatch(completeTask({ id: 7, completed: true }));
+//storeGeneral.dispatch(deleteTask({ id: 6 }));

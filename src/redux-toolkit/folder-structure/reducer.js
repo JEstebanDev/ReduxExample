@@ -26,11 +26,7 @@ const taskSlice = createSlice({
       state.loading = false;
     },
     ADD_TASK: (state, action) => {
-      state.tasks.push({
-        id: ++id,
-        task: action.payload.task,
-        completed: false,
-      });
+      state.tasks.push(action.payload);
     },
     REMOVE_TASK: (state, action) => {
       const index = state.tasks.findIndex(
@@ -42,7 +38,7 @@ const taskSlice = createSlice({
       const index = state.tasks.findIndex(
         (task) => task.id == action.payload.id
       );
-      state.tasks[index].completed = true;
+      state.tasks[index].completed = action.payload.completed;
     },
   },
 });
@@ -143,6 +139,32 @@ export const loadTasks = () =>
     onStart: API_REQUEST.type,
     method: "GET",
     onSuccess: GET_TASK.type,
+    onError: API_REQUEST_FAIL.type,
+  });
+
+export const addNewTask = (task) =>
+  API_REQUEST_ACTION({
+    url,
+    method: "POST",
+    data: task,
+    onSuccess: ADD_TASK.type,
+    onError: API_REQUEST_FAIL.type,
+  });
+
+export const completeTask = (task) =>
+  API_REQUEST_ACTION({
+    url: `${url}/${task.id}`,
+    method: "PATCH",
+    data: task,
+    onSuccess: COMPLETED_TASK.type,
+    onError: API_REQUEST_FAIL.type,
+  });
+
+export const deleteTask = (task) =>
+  API_REQUEST_ACTION({
+    url: `${url}/${task.id}`,
+    method: "DELETE",
+    onSuccess: REMOVE_TASK.type,
     onError: API_REQUEST_FAIL.type,
   });
 
