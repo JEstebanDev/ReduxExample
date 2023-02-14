@@ -1,5 +1,5 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import { API_REQUEST } from "../../task/duck-module/action";
+import { API_REQUEST as API_REQUEST_ACTION } from "../../task/duck-module/action";
 
 let id = 0;
 const initialState = {
@@ -138,7 +138,7 @@ const taskSlice = createSlice({
 const url = "/tasks";
 
 export const loadTasks = () =>
-  API_REQUEST({
+  API_REQUEST_ACTION({
     url,
     onStart: API_REQUEST.type,
     method: "GET",
