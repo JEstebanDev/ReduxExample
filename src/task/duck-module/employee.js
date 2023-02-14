@@ -9,7 +9,7 @@ const employeeSlice = createSlice({
     ADD_EMPLOYEE: (state, action) => {
       state.push({
         id: ++id,
-        name: action.payload,
+        name: action.payload.name,
       });
     },
   },
