@@ -4,7 +4,9 @@ import taskSlice from "../../redux-toolkit/folder-structure/reducer";
 import log from "../middleware/log";
 import error from "../middleware/error";
 import logger from "redux-logger";
-const storeEmployee = configureStore({
+import api from "../middleware/api";
+
+const storeGeneral = configureStore({
   reducer: {
     employee: employeeSlice,
     task: taskSlice,
@@ -13,7 +15,8 @@ const storeEmployee = configureStore({
     ...getDefaultMiddleware(),
     logger,
     error,
+    api,
   ],
 });
 
-export default storeEmployee;
+export default storeGeneral;
